@@ -1,0 +1,49 @@
+====================================
+Stock Newsletter - Windows 설치 가이드
+====================================
+
+[1단계] Python 설치 (이미 있으면 건너뛰기)
+   - https://python.org/downloads 에서 최신 Python 다운로드
+   - 설치 시 "Add Python to PATH" 반드시 체크!
+
+[2단계] 폴더 배치
+   - 이 폴더를 C:\Users\사용자이름\stock-newsletter\ 에 복사
+   - .env 파일이 포함되어 있는지 확인 (API 키가 들어 있음)
+
+[3단계] 패키지 설치 (명령 프롬프트 또는 PowerShell)
+   cd C:\Users\사용자이름\stock-newsletter
+   pip install -r requirements.txt
+
+[4단계] 테스트 실행
+   python send_email.py
+   → Gmail로 뉴스레터가 발송되면 성공!
+
+[5단계] 매일 자동 실행 (Windows 작업 스케줄러)
+   방법 A - 명령어:
+   schtasks /create /tn "StockNewsletter" /tr "python C:\Users\사용자이름\stock-newsletter\send_email.py" /sc daily /st 08:00
+
+   방법 B - GUI:
+   1. 시작 > "작업 스케줄러" 검색 > 열기
+   2. "기본 작업 만들기" 클릭
+   3. 이름: StockNewsletter
+   4. 트리거: 매일, 오전 08:00
+   5. 동작: 프로그램 시작
+      - 프로그램: python
+      - 인수: send_email.py
+      - 시작 위치: C:\Users\사용자이름\stock-newsletter
+
+[6단계] Claude Code에서 /newsletter 스킬 사용 (선택)
+   1. Claude Code 설치: npm install -g @anthropic-ai/claude-code
+   2. %USERPROFILE%\.claude\commands\ 폴더 생성
+   3. windows\newsletter.md 파일을 위 폴더에 복사
+   4. Claude Code에서 /newsletter 입력하면 실행!
+
+====================================
+포함된 파일 설명:
+  config.py        - 종목 목록 설정
+  newsletter.py    - 뉴스레터 생성 (AI 분석 포함)
+  send_email.py    - Gmail 발송
+  .env             - API 키 (외부 공유 금지!)
+  requirements.txt - Python 패키지 목록
+  windows/         - Windows용 스킬 파일 + 이 가이드
+====================================

@@ -1,0 +1,33 @@
+name: Daily Stock Newsletter
+
+on:
+  schedule:
+    # EST 오전 8시 = UTC 오후 1시 (EST는 UTC-5)
+    # EDT(서머타임) 오전 8시 = UTC 오후 12시
+    # 두 시간 모두 커버하기 위해 UTC 12:00에 실행 (EDT 8AM / EST 7AM)
+    # 정확한 EST 8AM을 원하면 아래 사용
+    - cron: '0 13 * * 1-5'  # UTC 13:00 = EST 8:00 AM (평일만)
+  workflow_dispatch:  # 수동 실행 가능
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate and send newsletter
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python send_email.py
