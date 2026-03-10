@@ -196,7 +196,7 @@ def analyze_news_with_ai(all_news_data):
         print("    Calling Claude Sonnet for analysis...")
         resp = client.messages.create(
             model="claude-sonnet-4-6",
-            max_tokens=4000,
+            max_tokens=8000,
             messages=[{"role": "user", "content": prompt}]
         )
         raw = resp.content[0].text
