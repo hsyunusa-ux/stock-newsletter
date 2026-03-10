@@ -2,11 +2,10 @@ name: Daily Stock Newsletter
 
 on:
   schedule:
-    # EST 오전 8시 = UTC 오후 1시 (EST는 UTC-5)
     # EDT(서머타임) 오전 8시 = UTC 오후 12시
-    # 두 시간 모두 커버하기 위해 UTC 12:00에 실행 (EDT 8AM / EST 7AM)
-    # 정확한 EST 8AM을 원하면 아래 사용
-    - cron: '0 13 * * 1-5'  # UTC 13:00 = EST 8:00 AM (평일만)
+    # EST 오전 8시 = UTC 오후 1시
+    # GitHub Actions cron 지연(30분~수시간) 감안하여 UTC 11:30에 실행
+    - cron: '30 11 * * 1-5'  # UTC 11:30 → EDT 7:30AM / EST 6:30AM (평일만)
   workflow_dispatch:  # 수동 실행 가능
 
 jobs:
