@@ -426,7 +426,7 @@ def generate_html(stocks_data, news_data, market_data, ai_analyses=None):
 
     html = f"""<!DOCTYPE html>
 <html><head><meta charset="utf-8"></head>
-<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 850px; margin: 0 auto; padding: 20px; background: #f0f2f5; color: #1a1a2e;">
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 1400px; margin: 0 auto; padding: 20px 40px; background: #f0f2f5; color: #1a1a2e;">
 
 <!-- View in Browser -->
 <div style="text-align: center; margin-bottom: 12px;">
