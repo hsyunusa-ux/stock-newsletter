@@ -23,11 +23,14 @@ load_env()
 
 
 def calc_rsi(prices, period=14):
-    """RSI 계산"""
-    delta = prices.diff()
-    gain = delta.where(delta > 0, 0).rolling(window=period).mean()
-    loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
-    rs = gain / loss
+    """RSI 계산 (Wilder EMA 방식 - 증권사 표준)"""
+    delta = prices.diff().dropna()
+    gain = delta.where(delta > 0, 0)
+    loss = (-delta.where(delta < 0, 0))
+    # 첫 period는 SMA, 이후 Wilder smoothing (EMA with alpha=1/period)
+    avg_gain = gain.ewm(alpha=1/period, min_periods=period, adjust=False).mean()
+    avg_loss = loss.ewm(alpha=1/period, min_periods=period, adjust=False).mean()
+    rs = avg_gain / avg_loss
     return (100 - (100 / (1 + rs))).iloc[-1]
 
 
@@ -51,11 +54,11 @@ def get_stock_data(ticker_symbol):
         ma50 = info.get("fiftyDayAverage")
         ma200 = info.get("twoHundredDayAverage")
 
-        # RSI 계산 (최근 30일 데이터로)
+        # RSI 계산 (6개월 데이터로 Wilder EMA 안정화)
         rsi = None
         try:
-            hist = stock.history(period="1mo")
-            if len(hist) >= 15:
+            hist = stock.history(period="6mo")
+            if len(hist) >= 20:
                 rsi = round(calc_rsi(hist["Close"]), 1)
         except Exception:
             pass
@@ -406,7 +409,89 @@ def color_val(val, threshold=0):
 
 # ── HTML Generation ──
 
-def generate_html(stocks_data, news_data, market_data, ai_analyses=None):
+def generate_portfolio_section(portfolio_data):
+    """포트폴리오 요약 HTML 섹션 생성"""
+    if not portfolio_data:
+        return ""
+
+    total_value = portfolio_data["total_value"]
+    total_cost = portfolio_data["total_cost"]
+    total_pnl = total_value - total_cost
+    total_return = total_pnl / total_cost * 100 if total_cost > 0 else 0
+    daily_change = portfolio_data.get("daily_change", 0)
+    ytd = portfolio_data.get("ytd_return", 0)
+    spy_ytd = portfolio_data.get("spy_ytd", 0)
+
+    dc_color = "#22c55e" if daily_change >= 0 else "#ef4444"
+    pnl_color = "#22c55e" if total_pnl >= 0 else "#ef4444"
+    ytd_color = "#22c55e" if ytd >= 0 else "#ef4444"
+
+    # 큰 변동 종목 (상위 3 + 하위 3)
+    movers = portfolio_data.get("top_movers", [])
+    movers_html = ""
+    for m in movers:
+        c = "#22c55e" if m["change"] >= 0 else "#ef4444"
+        arrow = "▲" if m["change"] >= 0 else "▼"
+        movers_html += f'<div style="display:flex;justify-content:space-between;padding:3px 0;font-size:13px;"><span>{arrow} {m["ticker"]}</span><span style="color:{c};font-weight:600">{m["change"]:+,.0f} ({m["pct"]:+.1f}%)</span></div>'
+
+    # 주의 종목
+    alerts = portfolio_data.get("alerts", [])
+    alerts_html = ""
+    for a in alerts:
+        alerts_html += f'<div style="font-size:13px;padding:2px 0;color:#f59e0b;">• {a}</div>'
+
+    # 계좌별 현황
+    accounts = portfolio_data.get("accounts", [])
+    acct_html = ""
+    for a in accounts:
+        ac = "#22c55e" if a["pnl"] >= 0 else "#ef4444"
+        acct_html += f'<div style="display:flex;justify-content:space-between;padding:3px 0;font-size:13px;"><span>{a["name"]}</span><span>{a["value"]:,.0f}</span><span style="color:{ac}">{a["return"]:+.1f}%</span></div>'
+
+    return f"""
+<!-- My Portfolio -->
+<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:12px;padding:20px;margin-bottom:20px;color:white;">
+  <h2 style="margin:0 0 14px;font-size:18px;color:#00d2ff;">My Portfolio</h2>
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+    <div style="flex:1;min-width:100px;background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;text-align:center;">
+      <div style="font-size:11px;color:#8892b0;">총 자산</div>
+      <div style="font-size:20px;font-weight:700;">{total_value:,.0f}</div>
+    </div>
+    <div style="flex:1;min-width:100px;background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;text-align:center;">
+      <div style="font-size:11px;color:#8892b0;">전일 대비</div>
+      <div style="font-size:20px;font-weight:700;color:{dc_color}">{daily_change:+,.0f}</div>
+    </div>
+    <div style="flex:1;min-width:100px;background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;text-align:center;">
+      <div style="font-size:11px;color:#8892b0;">총 손익</div>
+      <div style="font-size:20px;font-weight:700;color:{pnl_color}">{total_pnl:+,.0f}</div>
+      <div style="font-size:11px;color:{pnl_color}">{total_return:+.1f}%</div>
+    </div>
+    <div style="flex:1;min-width:100px;background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;text-align:center;">
+      <div style="font-size:11px;color:#8892b0;">YTD</div>
+      <div style="font-size:20px;font-weight:700;color:{ytd_color}">{ytd:+.1f}%</div>
+      <div style="font-size:11px;color:#8892b0;">S&P 500: {spy_ytd:+.1f}%</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:16px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:200px;">
+      <div style="font-size:12px;color:#8892b0;margin-bottom:6px;font-weight:600;">오늘 큰 변동</div>
+      {movers_html}
+    </div>
+    <div style="flex:1;min-width:200px;">
+      <div style="font-size:12px;color:#8892b0;margin-bottom:6px;font-weight:600;">주의 필요</div>
+      {alerts_html if alerts_html else '<div style="font-size:13px;color:#8892b0;">없음</div>'}
+    </div>
+    <div style="flex:1;min-width:200px;">
+      <div style="font-size:12px;color:#8892b0;margin-bottom:6px;font-weight:600;">계좌별</div>
+      {acct_html}
+    </div>
+  </div>
+</div>
+"""
+
+
+def generate_html(stocks_data, news_data, market_data, ai_analyses=None, portfolio_data=None):
     today = datetime.now().strftime("%Y-%m-%d (%A)")
 
     # 포트폴리오 통계
@@ -455,7 +540,12 @@ def generate_html(stocks_data, news_data, market_data, ai_analyses=None):
 
     html += f"""
 </div>
+"""
 
+    # My Portfolio 섹션 (포트폴리오 데이터가 있을 때만)
+    html += generate_portfolio_section(portfolio_data)
+
+    html += f"""
 <!-- Portfolio Summary -->
 <div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
   <h2 style="margin: 0 0 12px; font-size: 18px;">Portfolio Summary</h2>
@@ -698,7 +788,134 @@ def main():
         print("  Analyzing news with Claude AI...")
         ai_analyses = analyze_news_with_ai(news_data)
 
-    html = generate_html(stocks_data, news_data, market_data, ai_analyses)
+    # 포트폴리오 데이터 수집
+    portfolio_data = None
+    try:
+        print("  Fetching portfolio data...")
+        import sys
+        sys.path.insert(0, os.path.expanduser("~/stock-portfolio"))
+        from core.data_loader import load_portfolio_data
+        from core.attribution import calculate_stock_attribution, calculate_account_summary
+        from core.market_data import calc_rsi as _rsi
+
+        port = load_portfolio_data(
+            file_id=os.getenv("GOOGLE_DRIVE_FILE_ID", "15GSpPWQ4ePvRUb9yuG5GmK3T6z6oo97m"),
+            local_path=os.path.expanduser("~/Downloads/Portpolio_01.02.2026 (1).xlsx"),
+        )
+        all_h = pd.concat(port["holdings_by_account"].values(), ignore_index=True)
+
+        # stocks_data에서 시세 정보 활용 (이미 수집됨)
+        mkt = {}
+        for s in stocks_data:
+            if s:
+                mkt[s["ticker"]] = s
+
+        attr = calculate_stock_attribution(all_h, mkt, port.get("k401_history"))
+        acct_sum = calculate_account_summary(attr)
+
+        total_cost = attr["cost"].sum()
+        total_value = attr["current_value"].sum()
+
+        # 일일 변동
+        daily_change = 0
+        for _, row in all_h.iterrows():
+            t = row.get("Ticker", "")
+            if pd.isna(t) or t in ("Cash", "", "None"):
+                continue
+            if t in mkt and mkt[t]:
+                cp = mkt[t].get("current_price", 0) or 0
+                pc = mkt[t].get("previous_close", 0) or 0
+                sh = float(row.get("Share", 0) or 0)
+                if cp and pc and sh:
+                    daily_change += (cp - pc) * sh
+
+        # 큰 변동 종목 (상위3 + 하위3)
+        movers_list = []
+        for _, row in all_h.iterrows():
+            t = row.get("Ticker", "")
+            if pd.isna(t) or t in ("Cash", "", "None"):
+                continue
+            if t in mkt and mkt[t]:
+                cp = mkt[t].get("current_price", 0) or 0
+                pc = mkt[t].get("previous_close", 0) or 0
+                sh = float(row.get("Share", 0) or 0)
+                if cp and pc and sh:
+                    chg = (cp - pc) * sh
+                    pct = (cp - pc) / pc * 100
+                    movers_list.append({"ticker": t, "change": chg, "pct": pct})
+
+        # 같은 종목 합산
+        merged = {}
+        for m in movers_list:
+            if m["ticker"] in merged:
+                merged[m["ticker"]]["change"] += m["change"]
+            else:
+                merged[m["ticker"]] = m
+        movers_sorted = sorted(merged.values(), key=lambda x: x["change"])
+        top_movers = movers_sorted[:3] + movers_sorted[-3:][::-1]  # worst 3 + best 3 역순
+
+        # 주의 종목
+        alerts = []
+        for _, r in attr.iterrows():
+            if r["ticker"] == "Cash":
+                continue
+            # 과집중
+            if r["weight"] > 0.10 and "401K" not in r.get("account", ""):
+                alerts.append(f'{r["ticker"]} 비중 {r["weight"]*100:.1f}% (과집중)')
+            # 큰 손실
+            if r["return_pct"] < -0.30:
+                alerts.append(f'{r["ticker"]} {r["return_pct"]*100:.0f}% 손실 중')
+        # RSI 과매도 (stocks_data에서)
+        for s in stocks_data:
+            if s and s.get("rsi") and s["rsi"] < 30:
+                alerts.append(f'{s["ticker"]} RSI {s["rsi"]:.0f} (과매도)')
+
+        # YTD (포트폴리오 대시보드와 동일 로직)
+        from core.market_data import fetch_history
+        from core.returns import build_daily_portfolio_value
+        tickers_list = [t for t in all_h["Ticker"].unique() if pd.notna(t) and t not in ("Cash", "")]
+        try:
+            prices = fetch_history(list(tickers_list), "2026-01-01")
+            pv = build_daily_portfolio_value(all_h, prices, "2026-01-01")
+            ytd_return = (pv.iloc[-1] / pv.iloc[0] - 1) * 100 if len(pv) >= 2 else 0
+        except Exception:
+            ytd_return = 0
+
+        # S&P 500 YTD
+        try:
+            import time; time.sleep(1)
+            spy = fetch_history(["SPY"], "2026-01-01")
+            spy_ytd = (spy["SPY"].iloc[-1] / spy["SPY"].iloc[0] - 1) * 100 if not spy.empty else 0
+        except Exception:
+            spy_ytd = 0
+
+        # 계좌별
+        accounts_info = []
+        if acct_sum is not None and not acct_sum.empty:
+            for _, r in acct_sum.iterrows():
+                accounts_info.append({
+                    "name": r["account"],
+                    "value": r["current_value"],
+                    "pnl": r["pnl"],
+                    "return": r["return_pct"] * 100,
+                })
+
+        portfolio_data = {
+            "total_value": total_value,
+            "total_cost": total_cost,
+            "daily_change": daily_change,
+            "ytd_return": ytd_return,
+            "spy_ytd": spy_ytd,
+            "top_movers": top_movers,
+            "alerts": alerts[:5],
+            "accounts": accounts_info,
+        }
+        print(f"  Portfolio: {total_value:,.0f} (daily {daily_change:+,.0f})")
+    except Exception as e:
+        print(f"  [WARN] Portfolio data failed: {e}")
+        import traceback; traceback.print_exc()
+
+    html = generate_html(stocks_data, news_data, market_data, ai_analyses, portfolio_data)
 
     # 파일 저장
     output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
