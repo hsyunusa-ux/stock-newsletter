@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"></head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 1400px; margin: 0 auto; padding: 20px 40px; background: #f0f2f5; color: #1a1a2e;">
+
+<!-- View in Browser -->
+<div style="text-align: center; margin-bottom: 12px;">
+  <a href="https://hsyunusa-ux.github.io/stock-newsletter/output/newsletter_20260402.html" style="font-size: 13px; color: #6366f1; text-decoration: none;">웹 브라우저에서 보기 &rarr;</a>
+</div>
+
+<!-- Header -->
+<div style="background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: white; padding: 30px; border-radius: 16px; margin-bottom: 20px;">
+  <h1 style="margin: 0; font-size: 26px; letter-spacing: -0.5px;">Daily Stock Newsletter</h1>
+  <p style="margin: 8px 0 0; opacity: 0.7; font-size: 14px;">2026-04-02 (Thursday) | 14 stocks tracked</p>
+</div>
+
+<!-- Market Summary -->
+<div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+  <div style="flex: 1; min-width: 120px; background: white; border-radius: 12px; padding: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); text-align: center;">
+    <div style="font-size: 12px; color: #888; font-weight: 600;">S&P 500</div>
+    <div style="font-size: 18px; font-weight: 700; margin: 4px 0;">6,575.32</div>
+    <div style="font-size: 14px; font-weight: 700; color: #22c55e;">+0.72%</div>
+  </div>
+  <div style="flex: 1; min-width: 120px; background: white; border-radius: 12px; padding: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); text-align: center;">
+    <div style="font-size: 12px; color: #888; font-weight: 600;">NASDAQ</div>
+    <div style="font-size: 18px; font-weight: 700; margin: 4px 0;">21,840.95</div>
+    <div style="font-size: 14px; font-weight: 700; color: #22c55e;">+1.16%</div>
+  </div>
+  <div style="flex: 1; min-width: 120px; background: white; border-radius: 12px; padding: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); text-align: center;">
+    <div style="font-size: 12px; color: #888; font-weight: 600;">DOW 30</div>
+    <div style="font-size: 18px; font-weight: 700; margin: 4px 0;">46,565.74</div>
+    <div style="font-size: 14px; font-weight: 700; color: #22c55e;">+0.48%</div>
+  </div>
+  <div style="flex: 1; min-width: 120px; background: white; border-radius: 12px; padding: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); text-align: center;">
+    <div style="font-size: 12px; color: #888; font-weight: 600;">VIX</div>
+    <div style="font-size: 18px; font-weight: 700; margin: 4px 0;">27.65</div>
+    <div style="font-size: 14px; font-weight: 700; color: #22c55e;">+9.50%</div>
+  </div>
+</div>
+
+<!-- Portfolio Summary -->
+<div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+  <h2 style="margin: 0 0 12px; font-size: 18px;">Portfolio Summary</h2>
+  <div style="display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px;">
+    <div><span style="color: #888;">Avg Change:</span> <b style="color: #22c55e">+0.50%</b></div>
+    <div><span style="color: #888;">Gainers:</span> <b style="color: #22c55e">7</b></div>
+    <div><span style="color: #888;">Losers:</span> <b style="color: #ef4444">7</b></div>
+    <div><span style="color: #888;">Best:</span> <b style="color: #22c55e">INTC (+8.84%)</b></div>
+    <div><span style="color: #888;">Worst:</span> <b style="color: #ef4444">OPEN (-2.35%)</b></div>
+  </div>
+  <div style="margin-top: 10px; font-size: 13px; color: #888;">
+    Sectors: <b>Consumer Cyclical</b>: AMZN, TSLA | <b>Communication Services</b>: NFLX, RDDT | <b>Healthcare</b>: UNH, TMDX | <b>Technology</b>: INTC, QCOM, RBRK | <b>Financial Services</b>: SOFI, BMNR, ROOT | <b>Industrials</b>: JOBY | <b>Real Estate</b>: OPEN
+  </div>
+</div>
+
+<!-- Overview Table -->
+<div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 20px;">
+<h2 style="margin: 0; padding: 16px 16px 0; font-size: 18px;">Price & Valuation</h2>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+<thead>
+  <tr style="background: #1a1a2e; color: white;">
+    <th style="padding: 10px 8px; text-align: left;">Ticker</th>
+    <th style="padding: 10px 6px; text-align: right;">Price</th>
+    <th style="padding: 10px 6px; text-align: right;">Chg%</th>
+    <th style="padding: 10px 6px; text-align: right;">P/E</th>
+    <th style="padding: 10px 6px; text-align: right;">Fwd P/E</th>
+    <th style="padding: 10px 6px; text-align: right;">Target</th>
+    <th style="padding: 10px 6px; text-align: right;">Upside</th>
+    <th style="padding: 10px 6px; text-align: right;">MA50</th>
+    <th style="padding: 10px 6px; text-align: right;">RSI</th>
+    <th style="padding: 10px 6px; text-align: center;">Rating</th>
+  </tr>
+</thead>
+<tbody>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">AMZN<br><span style="font-weight: normal; font-size: 10px; color: #999;">Amazon.com, Inc.</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$210.57</td>
+    <td style="padding: 8px 6px; text-align: right; color: #22c55e; font-weight: 700;">+1.08%</td>
+    <td style="padding: 8px 6px; text-align: right;">29.33</td>
+    <td style="padding: 8px 6px; text-align: right;">22.42</td>
+    <td style="padding: 8px 6px; text-align: right;">$281.26</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+33.6%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$215.43 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">50.4</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#15803d; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">STRONG_BUY</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">TSLA<br><span style="font-weight: normal; font-size: 10px; color: #999;">Tesla, Inc.</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$381.26</td>
+    <td style="padding: 8px 6px; text-align: right; color: #22c55e; font-weight: 700;">+2.56%</td>
+    <td style="padding: 8px 6px; text-align: right;">356.32</td>
+    <td style="padding: 8px 6px; text-align: right;">135.66</td>
+    <td style="padding: 8px 6px; text-align: right;">$418.83</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+9.9%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$404.90 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">46.4</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#22c55e; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">BUY</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">NFLX<br><span style="font-weight: normal; font-size: 10px; color: #999;">Netflix, Inc.</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$95.55</td>
+    <td style="padding: 8px 6px; text-align: right; color: #ef4444; font-weight: 700;">-0.59%</td>
+    <td style="padding: 8px 6px; text-align: right;">37.77</td>
+    <td style="padding: 8px 6px; text-align: right;">24.80</td>
+    <td style="padding: 8px 6px; text-align: right;">$113.43</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+18.7%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$87.90 ↑</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">59.1</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#22c55e; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">BUY</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">UNH<br><span style="font-weight: normal; font-size: 10px; color: #999;">UnitedHealth Group</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$273.98</td>
+    <td style="padding: 8px 6px; text-align: right; color: #22c55e; font-weight: 700;">+1.25%</td>
+    <td style="padding: 8px 6px; text-align: right;">20.71</td>
+    <td style="padding: 8px 6px; text-align: right;">13.68</td>
+    <td style="padding: 8px 6px; text-align: right;">$357.81</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+30.6%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$287.25 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">46.4</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#22c55e; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">BUY</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">INTC<br><span style="font-weight: normal; font-size: 10px; color: #999;">Intel Corporation</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$48.03</td>
+    <td style="padding: 8px 6px; text-align: right; color: #22c55e; font-weight: 700;">+8.84%</td>
+    <td style="padding: 8px 6px; text-align: right;">N/A</td>
+    <td style="padding: 8px 6px; text-align: right;">48.41</td>
+    <td style="padding: 8px 6px; text-align: right;">$47.11</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#ef4444">-1.9%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$46.24 ↑</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">56.5</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#888; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">NONE</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">QCOM<br><span style="font-weight: normal; font-size: 10px; color: #999;">QUALCOMM Incorpora</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$127.28</td>
+    <td style="padding: 8px 6px; text-align: right; color: #ef4444; font-weight: 700;">-1.16%</td>
+    <td style="padding: 8px 6px; text-align: right;">25.66</td>
+    <td style="padding: 8px 6px; text-align: right;">11.48</td>
+    <td style="padding: 8px 6px; text-align: right;">$154.93</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+21.7%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$139.70 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">35.1</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#f59e0b; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">HOLD</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">RDDT<br><span style="font-weight: normal; font-size: 10px; color: #999;">Reddit, Inc.</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$136.18</td>
+    <td style="padding: 8px 6px; text-align: right; color: #22c55e; font-weight: 700;">+1.14%</td>
+    <td style="padding: 8px 6px; text-align: right;">52.18</td>
+    <td style="padding: 8px 6px; text-align: right;">16.59</td>
+    <td style="padding: 8px 6px; text-align: right;">$232.05</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+70.4%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$151.67 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">46.1</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#22c55e; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">BUY</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">SOFI<br><span style="font-weight: normal; font-size: 10px; color: #999;">SoFi Technologies,</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$15.63</td>
+    <td style="padding: 8px 6px; text-align: right; color: #ef4444; font-weight: 700;">-1.57%</td>
+    <td style="padding: 8px 6px; text-align: right;">40.08</td>
+    <td style="padding: 8px 6px; text-align: right;">19.51</td>
+    <td style="padding: 8px 6px; text-align: right;">$25.02</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+60.1%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$19.54 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">30.8</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#f59e0b; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">HOLD</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">JOBY<br><span style="font-weight: normal; font-size: 10px; color: #999;">Joby Aviation, Inc</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$8.27</td>
+    <td style="padding: 8px 6px; text-align: right; color: #22c55e; font-weight: 700;">+0.12%</td>
+    <td style="padding: 8px 6px; text-align: right;">N/A</td>
+    <td style="padding: 8px 6px; text-align: right;">-17.78</td>
+    <td style="padding: 8px 6px; text-align: right;">$11.90</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+43.9%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$10.24 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">32.8</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#f59e0b; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">HOLD</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">RBRK<br><span style="font-weight: normal; font-size: 10px; color: #999;">Rubrik, Inc.</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$48.59</td>
+    <td style="padding: 8px 6px; text-align: right; color: #ef4444; font-weight: 700;">-0.78%</td>
+    <td style="padding: 8px 6px; text-align: right;">N/A</td>
+    <td style="padding: 8px 6px; text-align: right;">82.78</td>
+    <td style="padding: 8px 6px; text-align: right;">$86.71</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+78.4%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$53.90 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">42.5</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#15803d; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">STRONG_BUY</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">BMNR<br><span style="font-weight: normal; font-size: 10px; color: #999;">BitMine Immersion </span></td>
+    <td style="padding: 8px 6px; text-align: right;">$19.69</td>
+    <td style="padding: 8px 6px; text-align: right; color: #ef4444; font-weight: 700;">-0.46%</td>
+    <td style="padding: 8px 6px; text-align: right;">N/A</td>
+    <td style="padding: 8px 6px; text-align: right;">20.95</td>
+    <td style="padding: 8px 6px; text-align: right;">$36.00</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+82.8%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$21.66 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">45.2</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#15803d; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">STRONG_BUY</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">OPEN<br><span style="font-weight: normal; font-size: 10px; color: #999;">Opendoor Technolog</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$4.57</td>
+    <td style="padding: 8px 6px; text-align: right; color: #ef4444; font-weight: 700;">-2.35%</td>
+    <td style="padding: 8px 6px; text-align: right;">N/A</td>
+    <td style="padding: 8px 6px; text-align: right;">-90.51</td>
+    <td style="padding: 8px 6px; text-align: right;">$4.33</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#ef4444">-5.2%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$5.09 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">41.9</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#888; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">NONE</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">TMDX<br><span style="font-weight: normal; font-size: 10px; color: #999;">TransMedics Group,</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$100.40</td>
+    <td style="padding: 8px 6px; text-align: right; color: #22c55e; font-weight: 700;">+1.00%</td>
+    <td style="padding: 8px 6px; text-align: right;">20.62</td>
+    <td style="padding: 8px 6px; text-align: right;">27.08</td>
+    <td style="padding: 8px 6px; text-align: right;">$161.30</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+60.7%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$128.30 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">31.3</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#22c55e; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">BUY</span></td>
+  </tr>
+  <tr style="border-bottom: 1px solid #f0f0f0;">
+    <td style="padding: 8px; font-weight: bold;">ROOT<br><span style="font-weight: normal; font-size: 10px; color: #999;">Root, Inc.</span></td>
+    <td style="padding: 8px 6px; text-align: right;">$43.26</td>
+    <td style="padding: 8px 6px; text-align: right; color: #ef4444; font-weight: 700;">-2.06%</td>
+    <td style="padding: 8px 6px; text-align: right;">18.33</td>
+    <td style="padding: 8px 6px; text-align: right;">12.54</td>
+    <td style="padding: 8px 6px; text-align: right;">$90.00</td>
+    <td style="padding: 8px 6px; text-align: right;"><span style="color:#22c55e">+108.0%</span></td>
+    <td style="padding: 8px 6px; text-align: right; font-size: 11px;">$54.42 ↓</td>
+    <td style="padding: 8px 6px; text-align: right; color: #888; font-weight: 600;">36.1</td>
+    <td style="padding: 8px 6px; text-align: center;"><span style="background:#888; color:white; padding:2px 6px; border-radius:10px; font-size:10px;">NONE</span></td>
+  </tr>
+</tbody></table></div></div>
+
+<!-- Individual Stock Cards -->
+<h2 style="font-size: 18px; margin: 24px 0 12px;">Stock Details</h2>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #22c55e;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">AMZN</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">Amazon.com, Inc.</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Consumer Cyclical</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$210.57</span>
+      <span style="font-size: 15px; font-weight: 700; color: #22c55e; margin-left: 8px;">+1.08%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>29.33</b></span>
+    <span>Fwd P/E: <b>22.42</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$2.26T</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $161.38 — $258.60</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 51%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $175.00 — <b>$281.26</b> — $360.00 (64 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$7.18</b> &nbsp;|&nbsp; EPS (Fwd): <b>$9.39</b> &nbsp;|&nbsp; Revenue: <b>$716.92B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+13.6%</b> &nbsp;|&nbsp; EPS Growth: <b style="color:#22c55e">+5.0%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>1.8</b> &nbsp;|&nbsp; Short % Float: <b>0.87%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $215.43 (Below) &nbsp;|&nbsp; MA200: $224.58 (Below) &nbsp;|&nbsp; RSI: 50.4 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">OpenAI의 역대 최대 규모 펀딩($1,220억) 라운드에 아마존이 기존 전략적 파트너로 참여</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">아마존의 2025년 FCF가 전년 대비 66% 급감한 $112억(설비투자 $1,318억 집행 결과)</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">2026년 설비투자 약 $2,000억 예정으로 FCF 추가 압박 예상</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">아마존이 위성통신 업체 Globalstar 인수 협상 중이라는 보도 (FT)</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #dc2626; font-weight: 700;">▼ 악재 - AI 인프라 경쟁에서 막대한 자본 지출로 FCF가 급감하고 있으며, 2026년에도 구조적 FCF 압박이 지속될 전망</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">2026년 $2,000억 설비투자 가이던스가 실제 실행될 경우 FCF는 사실상 소멸 수준에 근접할 수 있음</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">Globalstar 인수가 성사되면 위성 인터넷(Project Kuiper) 전략에 탄력이 붙으나 추가 자본 부담 발생</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">AI 인프라 투자 성과가 수익으로 전환되는 시기가 밸류에이션의 핵심 변수</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">---</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/news/openai-just-raised-a-historic-amount-of-money-here-are-2-stunning-numbers-you-shouldnt-forget-133202041.html" style="color: #2563eb; text-decoration: none;">OpenAI just raised a historic amount of money. Here are 2 stunning numbers you shouldn't forget.</a> <span style="color:#bbb;">- Yahoo Finance 2026-04-01</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/stock-futures-fall-oil-rises-113419505.html" style="color: #2563eb; text-decoration: none;">Stock Futures Fall, Oil Rises as Investors Assess Trump's Iran War Speech</a> <span style="color:#bbb;">- MT Newswires 2026-04-02</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://247wallst.com/investing/2026/04/02/semianalysis-ceo-googles-free-cash-flow-will-hit-zero-next-year-from-ai-capex/" style="color: #2563eb; text-decoration: none;">Semianalysis CEO: Google’s free cash flow will hit zero next year from AI capex</a> <span style="color:#bbb;">- 24/7 Wall St. 2026-04-02</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #22c55e;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">TSLA</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">Tesla, Inc.</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Consumer Cyclical</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$381.26</span>
+      <span style="font-size: 15px; font-weight: 700; color: #22c55e; margin-left: 8px;">+2.56%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>356.32</b></span>
+    <span>Fwd P/E: <b>135.66</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$1.43T</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $214.25 — $498.83</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 59%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $119.00 — <b>$418.83</b> — $600.00 (41 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$1.07</b> &nbsp;|&nbsp; EPS (Fwd): <b>$2.81</b> &nbsp;|&nbsp; Revenue: <b>$94.83B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#ef4444">-3.1%</b> &nbsp;|&nbsp; EPS Growth: <b style="color:#ef4444">-60.6%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>1.1</b> &nbsp;|&nbsp; Short % Float: <b>1.82%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $404.90 (Below) &nbsp;|&nbsp; MA200: $396.76 (Below) &nbsp;|&nbsp; RSI: 46.4 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">SpaceX가 IPO를 위한 비공개 SEC 제출 완료, 밸류에이션 최대 $1.75조 예상, 6월 상장 목표</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">SpaceX와 테슬라의 합작법인 Terafab 발표 (반도체 생산 통합 목적)</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">Terafab은 테슬라 FSD·옵티머스·로보택시용 엣지 추론 칩과 SpaceX 위성·궤도 데이터센터용 고출력 칩 개발 추진</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">테슬라 주가 당일 2.6% 상승, $381.26 마감</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #16a34a; font-weight: 700;">▲ 호재 - SpaceX IPO와 Terafab 합작법인이 테슬라의 AI·로보틱스·반도체 사업 연계 가치를 부각시키는 촉매로 작용</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">SpaceX IPO 시 테슬라와의 사업 연계(Terafab)가 재평가 계기가 될 수 있음</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">Terafab을 통한 수직 통합 반도체 전략이 실현되면 FSD·옵티머스 원가 경쟁력 개선 가능</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">SpaceX IPO의 듀얼클래스 주식 구조 및 머스크의 의결권 집중 이슈는 지배구조 리스크로 남음</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">테슬라 인도량 실적 발표가 임박해 있어 단기 주가 변동성 주의</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">---</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/article/spacex-confidentially-files-for-ipo-154109626.html" style="color: #2563eb; text-decoration: none;">SpaceX confidentially files for IPO</a> <span style="color:#bbb;">- Yahoo Finance 2026-04-01</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-trump-iran-war-tesla-deliveries/?src=A00220&yptr=yahoo" style="color: #2563eb; text-decoration: none;">Dow Jones Futures Fall, Oil Prices Soar As Trump Vows To Hit Iran 'Hard'; Tesla Deliveries Due</a> <span style="color:#bbb;">- Investor's Business Daily 2026-04-02</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/sectors/energy/articles/week-energy-transition-fengate-expands-113804396.html" style="color: #2563eb; text-decoration: none;">This Week In Energy Transition - Fengate Expands Solar Portfolio with Major Joint Venture</a> <span style="color:#bbb;">- Simply Wall St. 2026-04-02</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #ef4444;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">NFLX</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">Netflix, Inc.</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Communication Services</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$95.55</span>
+      <span style="font-size: 15px; font-weight: 700; color: #ef4444; margin-left: 8px;">-0.59%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>37.77</b></span>
+    <span>Fwd P/E: <b>24.80</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$405.31B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $75.01 — $134.12</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 35%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $80.00 — <b>$113.43</b> — $151.40 (45 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$2.53</b> &nbsp;|&nbsp; EPS (Fwd): <b>$3.85</b> &nbsp;|&nbsp; Revenue: <b>$45.18B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+17.6%</b> &nbsp;|&nbsp; EPS Growth: <b style="color:#22c55e">+32.7%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>1.6</b> &nbsp;|&nbsp; Short % Float: <b>1.93%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $87.90 (Above) &nbsp;|&nbsp; MA200: $107.25 (Below) &nbsp;|&nbsp; RSI: 59.1 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">기관 투자자들은 Q4 2025 기준 지분 83.7%로 대거 매수 중(폴 튜더 존스 147% 증가 등)</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">반면 공동 CEO 2인·CFO는 2026년 초 $82~$84 구간에서 자사주 매도</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">워너브라더스 인수($720억) 실패 후 자체 IP 구축 전략으로 전환</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">2025년 매출 $451.8억(+15.85% YoY), FCF $94.6억(+36.68%), 광고 매출 2배 이상 성장</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #d97706; font-weight: 700;">■ 중립 - 탄탄한 펀더멘털과 광고 매출 성장은 긍정적이나, 내부자 매도와 워너브라더스 인수 실패에 따른 IP 확보 불확실성이 상충</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">기관의 대규모 매수 vs. 경영진 매도라는 엇갈린 시그널은 현재 밸류에이션 부담을 시사</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">워너브라더스 인수 무산으로 자체 프랜차이즈 구축 역량이 장기 성장성의 핵심 변수로 부상</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">2026년 광고 매출 또 한 번 2배 성장 전망이 실현되는지가 투자 thesis의 관건</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">51명 애널리스트 중 37명 매수 의견, 평균 목표가 $113.43으로 현재가 대비 약 19% 상승 여력 제시</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">---</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://247wallst.com/investing/2026/04/02/institutional-investors-pile-into-netflix-even-as-company-executives-head-for-the-exits/" style="color: #2563eb; text-decoration: none;">Institutional Investors Pile Into Netflix Even as Company Executives Head for the Exits</a> <span style="color:#bbb;">- 24/7 Wall St. 2026-04-02</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/netflix-searches-franchises-losing-harry-100047086.html" style="color: #2563eb; text-decoration: none;">Netflix searches for franchises after losing out on Harry Potter</a> <span style="color:#bbb;">- Reuters 2026-04-02</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/zacks-industry-outlook-highlights-netflix-084300341.html" style="color: #2563eb; text-decoration: none;">Zacks Industry Outlook Highlights Netflix, Fox and Sirius</a> <span style="color:#bbb;">- Zacks 2026-04-02</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #22c55e;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">UNH</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">UnitedHealth Group Incorporated</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Healthcare</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$273.98</span>
+      <span style="font-size: 15px; font-weight: 700; color: #22c55e; margin-left: 8px;">+1.25%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>20.71</b></span>
+    <span>Fwd P/E: <b>13.68</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$248.69B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $234.60 — $606.36</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 11%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $255.00 — <b>$357.81</b> — $440.00 (26 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$13.23</b> &nbsp;|&nbsp; EPS (Fwd): <b>$20.03</b> &nbsp;|&nbsp; Revenue: <b>$447.57B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+12.3%</b> &nbsp;|&nbsp; EPS Growth: <b style="color:#ef4444">-99.9%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Div Yield: <b>323.00%</b> &nbsp;|&nbsp; Short Ratio: <b>2.3</b> &nbsp;|&nbsp; Short % Float: <b>1.97%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $287.25 (Below) &nbsp;|&nbsp; MA200: $312.71 (Below) &nbsp;|&nbsp; RSI: 46.4 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">Q4 2025 매출 $1,132억(YoY +12.3%), 시장 예상 부합했으나 연간 매출 가이던스 대폭 하회</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">주가는 실적 발표 후 22.3% 하락, 현재 $273.40 수준</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">Simply Wall St DCF 분석상 적정가치 $816.71 대비 66.5% 할인 거래 중</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">최근 1년간 주가 약 46% 하락, 헬스케어 업종 내 규제 리스크·의료비 상승 압박 지속</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #dc2626; font-weight: 700;">▼ 악재 - 연간 가이던스 대폭 하회와 주가 급락이 투자 심리를 크게 훼손, 규제·비용 불확실성이 단기 회복을 제한</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">DCF 기준 대폭 저평가 vs. 실적 가이던스 실망이라는 괴리를 어떻게 해석할지가 투자 판단의 핵심</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">메디케어·메디케이드 관련 규제 변화가 추가 하방 리스크로 작용 가능</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">일부 애널리스트의 매수 의견 전환(인베스토피디아 헤드라인) 등 역발상 투자 관심 증가</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">P/E 20.63배로 업종 평균 대비 소폭 고평가이나 성장성 감안 시 Fair Ratio 35.73배와의 괴리 주목</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">---</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/sectors/healthcare/articles/health-insurance-providers-stocks-q4-112020720.html" style="color: #2563eb; text-decoration: none;">Health Insurance Providers Stocks Q4 Recap: Benchmarking UnitedHealth (NYSE:UNH)</a> <span style="color:#bbb;">- StockStory 2026-04-02</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/unitedhealth-group-unh-now-potential-021120887.html" style="color: #2563eb; text-decoration: none;">Is UnitedHealth Group (UNH) Now A Potential Opportunity After Recent Share Price Weakness</a> <span style="color:#bbb;">- Simply Wall St. 2026-04-02</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://www.investopedia.com/unitedhealth-stock-has-lost-nearly-half-its-value-in-the-last-year-this-analyst-says-it-is-time-to-buy-11940679" style="color: #2563eb; text-decoration: none;">UnitedHealth Stock Has Lost Nearly Half Its Value in the Last Year. This Analyst Says It's Time to Buy.</a> <span style="color:#bbb;">- Investopedia 2026-04-01</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #22c55e;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">INTC</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">Intel Corporation</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Technology</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$48.03</span>
+      <span style="font-size: 15px; font-weight: 700; color: #22c55e; margin-left: 8px;">+8.84%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>N/A</b></span>
+    <span>Fwd P/E: <b>48.41</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$241.16B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $17.67 — $54.60</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 82%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $20.40 — <b>$47.11</b> — $71.50 (41 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$-0.06</b> &nbsp;|&nbsp; EPS (Fwd): <b>$0.99</b> &nbsp;|&nbsp; Revenue: <b>$52.85B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#ef4444">-4.1%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>1.6</b> &nbsp;|&nbsp; Short % Float: <b>2.30%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $46.24 (Above) &nbsp;|&nbsp; MA200: $35.14 (Above) &nbsp;|&nbsp; RSI: 56.5 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">아일랜드 Fab 34 공장의 49% 지분을 아폴로로부터 $142억에 재매입 결정</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">매입 자금은 보유 현금 + 약 $65억 신규 부채 발행으로 조달</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">2027년부터 EPS 증가 및 신용 프로파일 개선 효과 예상</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">AI 데이터센터에서 CPU 수요 증가 추세, 18A 공정 기술 출시 성공</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #16a34a; font-weight: 700;">▲ 호재 - Fab 34 완전 소유권 회수는 인텔의 제조 전략 자율성 강화 및 재무 안정성 회복 신호로 시장에 긍정적으로 해석, 주가 9% 이상 급등</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">신규 부채 $65억 조달에 따른 재무 부담이 2026~2027년 이자비용에 미치는 영향 모니터링 필요</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">아젠틱 AI 확산으로 CPU 수요 부활 가능성이 인텔 턴어라운드의 핵심 서사</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">AMD·엔비디아(자체 CPU 서버 진출)와의 데이터센터 경쟁 심화는 지속적인 하방 압력</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">18A 공정의 외부 고객 수주 확보 여부가 파운드리 사업 성패를 좌우</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">---</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/video/intel-to-spend-142b-to-buy-back-ireland-fab-stake-cal-maine-stock-pops-181032277.html" style="color: #2563eb; text-decoration: none;">Intel to spend $14.2B to buy back Ireland fab stake, Cal-Maine stock pops</a> <span style="color:#bbb;">- Yahoo Finance Video 2026-04-01</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/article/intel-stock-climbs-more-than-9-on-chip-plant-buyout-news-162839014.html" style="color: #2563eb; text-decoration: none;">Intel stock climbs more than 9% on chip plant buyout news</a> <span style="color:#bbb;">- Yahoo Finance 2026-04-01</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://www.verdict.co.uk/intel-buyback-ireland-fab-stake/" style="color: #2563eb; text-decoration: none;">Intel agrees $14.2bn buyback of chip fab JV stake in Ireland</a> <span style="color:#bbb;">- Verdict 2026-04-02</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #ef4444;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">QCOM</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">QUALCOMM Incorporated</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Technology</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$127.28</span>
+      <span style="font-size: 15px; font-weight: 700; color: #ef4444; margin-left: 8px;">-1.16%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>25.66</b></span>
+    <span>Fwd P/E: <b>11.48</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$135.94B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $120.80 — $205.95</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 8%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $100.00 — <b>$154.93</b> — $200.00 (28 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$4.96</b> &nbsp;|&nbsp; EPS (Fwd): <b>$11.09</b> &nbsp;|&nbsp; Revenue: <b>$44.87B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+5.0%</b> &nbsp;|&nbsp; EPS Growth: <b style="color:#ef4444">-1.8%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Div Yield: <b>280.00%</b> &nbsp;|&nbsp; Short Ratio: <b>4.4</b> &nbsp;|&nbsp; Short % Float: <b>4.15%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $139.70 (Below) &nbsp;|&nbsp; MA200: $158.55 (Below) &nbsp;|&nbsp; RSI: 35.1 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">골드만삭스, QCOM 커버리지 개시: 중립(Neutral), 목표가 $135(현재가 대비 약 4% 상승)</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">번스타인은 Market Perform으로 하향, 목표가 $175→$140 (스마트폰 수요 약화·애플 라이선스 만료 리스크)</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">휴머노이드 로보틱스 업체 Neura Robotics 투자 및 전기차 브랜드 FREELANDER와 AI 플랫폼 협력</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">현재 주가 $127.28, 애널리스트 평균 목표가 $154.93 대비 약 18% 할인</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #dc2626; font-weight: 700;">▼ 악재 - 주요 IB 2곳이 잇따라 중립/하향 의견을 제시하고 애플 라이선스 만료 리스크가 부각되어 단기 모멘텀 약화</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">애플 라이선스 계약 만료(1년 내) 이슈가 현실화될 경우 매출에 구조적 타격</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">로보틱스·EV 확장은 장기 성장 다변화 스토리이나 현재 매출 기여도는 미미</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">영업이익률 11.9%(전년 25.8%)의 급격한 하락 원인과 회복 시점 파악이 중요</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">스마트폰 시장 메모리 가격 상승으로 인한 출하량 둔화가 단기 실적 리스크</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">---</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/globalstar-rallies-report-amazon-buyout-233704539.html" style="color: #2563eb; text-decoration: none;">Satellite Operator Globalstar Rallies on Report That Amazon Is in Buyout Talks</a> <span style="color:#bbb;">- Bloomberg 2026-04-02</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/qualcomm-expands-ai-footprint-robotics-071003934.html" style="color: #2563eb; text-decoration: none;">Qualcomm Expands AI Footprint Into Robotics And EVs As Shares Lag Targets</a> <span style="color:#bbb;">- Simply Wall St. 2026-04-02</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/goldman-sachs-initiates-qualcomm-qcom-020600974.html" style="color: #2563eb; text-decoration: none;">Goldman Sachs Initiates Qualcomm (QCOM) at Neutral, Notes Mixed Growth Outlook</a> <span style="color:#bbb;">- Insider Monkey 2026-04-02</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #22c55e;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">RDDT</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">Reddit, Inc.</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Communication Services</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$136.18</span>
+      <span style="font-size: 15px; font-weight: 700; color: #22c55e; margin-left: 8px;">+1.14%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>52.18</b></span>
+    <span>Fwd P/E: <b>16.59</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$26.02B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $79.75 — $282.95</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 28%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $125.00 — <b>$232.05</b> — $300.00 (30 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$2.61</b> &nbsp;|&nbsp; EPS (Fwd): <b>$8.21</b> &nbsp;|&nbsp; Revenue: <b>$2.20B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+69.7%</b> &nbsp;|&nbsp; EPS Growth: <b style="color:#22c55e">+247.4%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>3.4</b> &nbsp;|&nbsp; Short % Float: <b>14.65%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $151.67 (Below) &nbsp;|&nbsp; MA200: $192.17 (Below) &nbsp;|&nbsp; RSI: 46.1 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">주가 연초 대비 41.4% 하락, 최근 1개월 -7.58%로 시장 대비 부진</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">Q4 2025 광고 매출 $6.9억(YoY +75%), ARPU $5.98(YoY +42%), DAU 1.21억(YoY +19%)</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">2026년 3월 쇼핑 광고 강화(DPA 업그레이드, Shopify 연동) 발표</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">EPS 추정치 전년 대비 +376.92%, 매출 추정치 +56.51%(다음 분기 기준)</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #d97706; font-weight: 700;">■ 중립 - 펀더멘털 성장세는 뚜렷하나 거시경제 불확실성(관세→광고비 감소)과 높은 밸류에이션(Forward P/E 33.48배)이 주가 회복을 억제</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">광고 매출의 폭발적 성장에도 주가가 41% 급락한 것은 거시환경 및 밸류에이션 부담 반영</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">DPA·Shopify 연동 등 e커머스 광고 플랫폼화 성공 여부가 향후 ARPU 성장의 분기점</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">Zacks Rank #3(Hold)로 애널리스트들도 뚜렷한 방향성을 제시하지 못하는 상황</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">AI 기반 Reddit Answers 등 사용자 경험 개선이 DAU/WAU 성장을 지속시킬 수 있는지 주목</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">---</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/reddit-inc-rddt-exceeds-market-215003548.html" style="color: #2563eb; text-decoration: none;">Reddit Inc. (RDDT) Exceeds Market Returns: Some Facts to Consider</a> <span style="color:#bbb;">- Zacks 2026-04-01</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://247wallst.com/investing/2026/04/01/ge-aerospace-is-down-14-this-month-while-its-190-billion-backlog-keeps-growing/" style="color: #2563eb; text-decoration: none;">GE Aerospace Is Down 14% This Month While Its $190 Billion Backlog Keeps Growing</a> <span style="color:#bbb;">- 24/7 Wall St. 2026-04-01</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/hold-reddit-stock-despite-41-162200091.html" style="color: #2563eb; text-decoration: none;">Should You Hold on to Reddit Stock Despite Its 41% Dip in YTD?</a> <span style="color:#bbb;">- Zacks 2026-04-01</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #ef4444;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">SOFI</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">SoFi Technologies, Inc.</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Financial Services</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$15.63</span>
+      <span style="font-size: 15px; font-weight: 700; color: #ef4444; margin-left: 8px;">-1.57%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>40.08</b></span>
+    <span>Fwd P/E: <b>19.51</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$19.93B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $8.60 — $32.73</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 29%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $12.00 — <b>$25.02</b> — $38.00 (20 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$0.39</b> &nbsp;|&nbsp; EPS (Fwd): <b>$0.80</b> &nbsp;|&nbsp; Revenue: <b>$3.58B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+40.2%</b> &nbsp;|&nbsp; EPS Growth: <b style="color:#ef4444">-57.0%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>2.1</b> &nbsp;|&nbsp; Short % Float: <b>11.09%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $19.54 (Below) &nbsp;|&nbsp; MA200: $23.81 (Below) &nbsp;|&nbsp; RSI: 30.8 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">론 플랫폼 비즈니스(LPB)에서 3개 신규 파트너와 $36억 이상 개인대출 공급 약정 확보</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">주가 연초 대비 43.1% 하락, 최근 30일 -14.7%로 시장 및 업종 대비 크게 부진</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">애널리스트 평균 목표가 $25.03 vs. 현재가 $15.63으로 약 60% 괴리</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">가장 많이 팔로우되는 내러티브는 현재가($15.63) 대비 소폭 고평가($14.00)로 분석</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #d97706; font-weight: 700;">■ 중립 - LPB 수수료 수익 다변화는 긍정적이나 개인 무담보 대출의 신용 손실 리스크와 거시 불확실성이 주가 회복을 제한</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">은행 라이선스 보유로 예금 기반 자금 조달이 가능하다는 구조적 차별점이 핵심 투자 thesis</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">LPB 확대로 자산 보유 리스크를 줄이고 수수료 기반 수익 비중을 높이는 전략 변화가 중요한 전환점</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">금리 환경 변화에 따른 순이자마진(NIM) 및 개인대출 부실률 추이를 면밀히 모니터링해야 함</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">목표가와 현재가의 큰 괴리가 저평가 기회인지, 시장의 리스크 반영인지를 구분하는 것이 관건</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">---</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/look-sofi-technologies-sofi-valuation-021258841.html" style="color: #2563eb; text-decoration: none;">A Look At SoFi Technologies (SOFI) Valuation After Expanding Its Loan Platform Partnerships</a> <span style="color:#bbb;">- Simply Wall St. 2026-04-02</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/sofi-technologies-inc-sofi-stock-214503977.html" style="color: #2563eb; text-decoration: none;">SoFi Technologies, Inc. (SOFI) Stock Drops Despite Market Gains: Important Facts to Note</a> <span style="color:#bbb;">- Zacks 2026-04-01</span></p><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/sofi-technologies-inc-sofi-trending-130004529.html" style="color: #2563eb; text-decoration: none;">SoFi Technologies, Inc. (SOFI) Is a Trending Stock: Facts to Know Before Betting on It</a> <span style="color:#bbb;">- Zacks 2026-04-01</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #22c55e;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">JOBY</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">Joby Aviation, Inc.</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Industrials</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$8.27</span>
+      <span style="font-size: 15px; font-weight: 700; color: #22c55e; margin-left: 8px;">+0.12%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>N/A</b></span>
+    <span>Fwd P/E: <b>-17.78</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$8.10B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $4.96 — $20.95</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 21%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $6.00 — <b>$11.90</b> — $18.00 (9 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$-1.13</b> &nbsp;|&nbsp; EPS (Fwd): <b>$-0.47</b> &nbsp;|&nbsp; Revenue: <b>$53.4M</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+559.7%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>3.5</b> &nbsp;|&nbsp; Short % Float: <b>11.21%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $10.24 (Below) &nbsp;|&nbsp; MA200: $13.70 (Below) &nbsp;|&nbsp; RSI: 32.8 (Neutral)</div>
+  
+  
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #ef4444;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">RBRK</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">Rubrik, Inc.</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Technology</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$48.59</span>
+      <span style="font-size: 15px; font-weight: 700; color: #ef4444; margin-left: 8px;">-0.78%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>N/A</b></span>
+    <span>Fwd P/E: <b>82.78</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$9.83B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $44.75 — $103.00</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 7%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $64.00 — <b>$86.71</b> — $126.00 (24 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$-1.78</b> &nbsp;|&nbsp; EPS (Fwd): <b>$0.59</b> &nbsp;|&nbsp; Revenue: <b>$1.32B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+46.3%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>3.9</b> &nbsp;|&nbsp; Short % Float: <b>9.28%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $53.90 (Below) &nbsp;|&nbsp; MA200: $74.27 (Below) &nbsp;|&nbsp; RSI: 42.5 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">짐 크레이머, RBRK에 대해 "보유하라(Hold)" 권고</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">바이풀 CEO의 최근 실적은 양호했으나 현재 시장 환경에서 좋은 실적만으로는 부족하다고 평가</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">주가 고점 대비 약 40% 하락, 크레이머는 현 약세장에서 높은 P/E 멀티플 종목에 투자자 관심 줄어들었다고 진단</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #d97706; font-weight: 700;">■ 중립 - 실적 자체는 긍정적이나 고밸류에이션 기술주에 대한 시장 선호도 저하로 주가 회복에 시간이 걸릴 전망</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">데이터 보안·사이버 복구 플랫폼으로서의 사업 펀더멘털은 견고하나 멀티플 재평가 리스크 상존</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">약세장 환경에서 고P/E 성장주에 대한 투자자 심리 회복 시점이 주가 반등의 선결 조건</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">이미 고점 대비 40% 하락한 만큼 추가 하락 시 장기 투자 관점에서의 매력도 점진적으로 증가</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">---</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/jim-cramer-rubrik-inc-want-162751321.html" style="color: #2563eb; text-decoration: none;">Jim Cramer on Rubrik, Inc.: “You Want to Hold”</a> <span style="color:#bbb;">- Insider Monkey 2026-04-01</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #ef4444;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">BMNR</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">BitMine Immersion Technologies,</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Financial Services</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$19.69</span>
+      <span style="font-size: 15px; font-weight: 700; color: #ef4444; margin-left: 8px;">-0.46%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>N/A</b></span>
+    <span>Fwd P/E: <b>20.95</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$8.97B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $3.92 — $161.00</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 10%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $33.00 — <b>$36.00</b> — $39.00 (2 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$-0.93</b> &nbsp;|&nbsp; EPS (Fwd): <b>$0.94</b> &nbsp;|&nbsp; Revenue: <b>$7.2M</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+90.9%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Div Yield: <b>5.00%</b> &nbsp;|&nbsp; Short Ratio: <b>0.5</b> &nbsp;|&nbsp; Short % Float: <b>4.62%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $21.66 (Below) &nbsp;|&nbsp; MA200: $36.84 (Below) &nbsp;|&nbsp; RSI: 45.2 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">강세 전망 업그레이드를 받았으나 4개월간의 기술적 저항 구간(트랩)이 여전히 유효하다는 분석</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #d97706; font-weight: 700;">■ 중립 - 업그레이드 자체는 긍정적이나 기술적 매물대 부담으로 단기 상승 여력이 제한적</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">비트코인 채굴주 특성상 BTC 가격 등락에 주가가 직결되므로 암호화폐 시장 동향 병행 모니터링 필요</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">기술적 저항선 돌파 여부가 추세 전환의 핵심 확인 지표</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">---</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://beincrypto.com/bitmine-stock-b-riley-target-analysis/" style="color: #2563eb; text-decoration: none;">BitMine Stock Gets a Bullish Upgrade, but a 4-Month Trap Still Holds</a> <span style="color:#bbb;">- BeInCrypto 2026-04-01</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #ef4444;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">OPEN</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">Opendoor Technologies Inc</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Real Estate</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$4.57</span>
+      <span style="font-size: 15px; font-weight: 700; color: #ef4444; margin-left: 8px;">-2.35%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>N/A</b></span>
+    <span>Fwd P/E: <b>-90.51</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$4.38B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $0.51 — $10.87</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 39%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $1.00 — <b>$4.33</b> — $8.00 (6 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$-1.70</b> &nbsp;|&nbsp; EPS (Fwd): <b>$-0.05</b> &nbsp;|&nbsp; Revenue: <b>$4.37B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#ef4444">-32.1%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>2.6</b> &nbsp;|&nbsp; Short % Float: <b>14.86%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $5.09 (Below) &nbsp;|&nbsp; MA200: $5.37 (Below) &nbsp;|&nbsp; RSI: 41.9 (Neutral)</div>
+  
+    <div style="margin-top: 10px; background: #f8f9ff; border-radius: 10px; padding: 16px; border-left: 4px solid #6366f1;">
+      <div style="font-size: 12px; font-weight: 700; color: #6366f1; margin-bottom: 10px;">AI 뉴스 분석</div>
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">핵심 요약</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">Doma의 클로징·에스크로 사업 인수(직원 85명 포함), 타이틀 자동화 역량 및 Fannie Mae 타이틀 승인 프로그램 지원 강화</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">최근 모기지 대출 상품 시범 도입으로 금융·클로징 스택으로 사업 영역 확대 중</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">2028년 매출 $47억, 순이익 $2.4억 전망(내러티브 기준), 적정가 $4.33(현재가 대비 약 5% 하락 여력)</li></ul>
+      </div>
+      <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 8px 12px; display: inline-block;">
+        <span style="font-size: 13px; color: #d97706; font-weight: 700;">■ 중립 - Doma 인수로 플랫폼 완결성은 높아지나 여전히 주택 시장 침체와 재고·부채 리스크가 핵심 하방 요인으로 잔존</span>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">투자자 주목 포인트</div>
+        <ul style="margin: 4px 0; padding-left: 18px;"><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">타이틀 자동화+모기지 대출 진출이 수수료 기반 고마진 수익 다변화로 이어질 수 있는지가 중장기 thesis의 핵심</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">주택 거래량 회복 시기와 금리 환경이 재고 보유 비용 및 실적에 직접적인 영향을 미침</li><li style="margin: 3px 0; font-size: 13px; line-height: 1.6; color: #333;">23개의 다양한 공정가치 추정치가 존재할 만큼 밸류에이션 불확실성이 매우 높은 종목</li></ul>
+      </div>
+    </div>
+  <div style="margin-top: 8px; border-top: 1px solid #f0f0f0; padding-top: 8px; font-size: 11px; color: #888;">뉴스 원문:</div><p style="margin: 4px 0; font-size: 12px;"><a href="https://finance.yahoo.com/markets/stocks/articles/opendoor-open-using-doma-deal-042812087.html" style="color: #2563eb; text-decoration: none;">Is Opendoor (OPEN) Using Doma Deal To Quietly Redraw Its End‑to‑End Housing Playbook?</a> <span style="color:#bbb;">- Simply Wall St. 2026-04-02</span></p>
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #22c55e;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">TMDX</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">TransMedics Group, Inc.</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Healthcare</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$100.40</span>
+      <span style="font-size: 15px; font-weight: 700; color: #22c55e; margin-left: 8px;">+1.00%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>20.62</b></span>
+    <span>Fwd P/E: <b>27.08</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$3.44B</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $62.23 — $156.00</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 41%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $130.00 — <b>$161.30</b> — $190.00 (10 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$4.87</b> &nbsp;|&nbsp; EPS (Fwd): <b>$3.71</b> &nbsp;|&nbsp; Revenue: <b>$605.5M</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+32.2%</b> &nbsp;|&nbsp; EPS Growth: <b style="color:#22c55e">+11.9%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>9.0</b> &nbsp;|&nbsp; Short % Float: <b>41.54%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $128.30 (Below) &nbsp;|&nbsp; MA200: $124.45 (Below) &nbsp;|&nbsp; RSI: 31.3 (Neutral)</div>
+  
+  
+</div>
+<div style="background: white; border-radius: 12px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-left: 4px solid #ef4444;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <span style="font-size: 17px; font-weight: 700;">ROOT</span>
+      <span style="font-size: 13px; color: #888; margin-left: 8px;">Root, Inc.</span>
+      <span style="font-size: 11px; color: #aaa; margin-left: 6px;">Financial Services</span>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 20px; font-weight: 700;">$43.26</span>
+      <span style="font-size: 15px; font-weight: 700; color: #ef4444; margin-left: 8px;">-2.06%</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #555; flex-wrap: wrap;">
+    <span>P/E: <b>18.33</b></span>
+    <span>Fwd P/E: <b>12.54</b></span>
+    <span>PEG: <b>N/A</b></span>
+    <span>Mkt Cap: <b>$672.9M</b></span>
+  </div>
+  
+    <div style="margin: 8px 0;">
+      <div style="font-size: 11px; color: #888; margin-bottom: 4px;">52W Range: $42.51 — $162.99</div>
+      <div style="background: #e5e7eb; border-radius: 4px; height: 8px; position: relative;">
+        <div style="background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444); border-radius: 4px; height: 8px; width: 100%;"></div>
+        <div style="position: absolute; top: -2px; left: 1%; width: 12px; height: 12px; background: #1a1a2e; border-radius: 50%; border: 2px solid white; transform: translateX(-50%);"></div>
+      </div>
+    </div>
+  <div style="font-size: 12px; color: #555; margin: 6px 0;">Target: $52.00 — <b>$90.00</b> — $125.00 (5 analysts)</div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">EPS (TTM): <b>$2.36</b> &nbsp;|&nbsp; EPS (Fwd): <b>$3.45</b> &nbsp;|&nbsp; Revenue: <b>$1.52B</b> &nbsp;|&nbsp; Rev Growth: <b style="color:#22c55e">+21.5%</b> &nbsp;|&nbsp; EPS Growth: <b style="color:#ef4444">-76.4%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">Short Ratio: <b>6.0</b> &nbsp;|&nbsp; Short % Float: <b>19.01%</b></div>
+  <div style="margin: 6px 0; font-size: 12px; color: #555;">MA50: $54.42 (Below) &nbsp;|&nbsp; MA200: $83.67 (Below) &nbsp;|&nbsp; RSI: 36.1 (Neutral)</div>
+  
+  
+</div>
+<p style="text-align: center; color: #aaa; font-size: 11px; margin-top: 30px;">
+  Generated by Stock Newsletter Bot | Data from Yahoo Finance<br>
+  Disclaimer: This is for informational purposes only, not investment advice.
+</p>
+</body></html>
