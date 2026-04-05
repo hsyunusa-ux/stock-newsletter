@@ -1,12 +1,17 @@
 """Stock Newsletter Configuration"""
 
-# 투자 종목 티커 목록
-TICKERS = [
+# Google Drive 포트폴리오 설정
+GOOGLE_DRIVE_FILE_ID = "15GSpPWQ4ePvRUb9yuG5GmK3T6z6oo97m"
+GOOGLE_CREDENTIALS_PATH = "../stock-portfolio/credentials.json"  # 서비스 계정 키
+
+# 제외할 티커 (현금, 상폐, 뮤추얼펀드 등)
+EXCLUDE_TICKERS = {"CASH", "NBEVQ", "BGSAX", "LBSAX"}
+
+# 폴백용 티커 (Google Drive 접속 실패 시 사용)
+FALLBACK_TICKERS = [
     "AMZN", "TSLA", "NFLX", "UNH", "INTC",
     "QCOM", "RDDT", "SOFI", "JOBY", "RBRK",
     "BMNR", "OPEN", "TMDX", "ROOT",
 ]
 
-# 뉴스레터 수신 이메일 (Gmail MCP로 발송)
-# Gmail MCP는 인증된 계정에서 자기 자신에게 발송
 NEWSLETTER_SUBJECT = "Daily Stock Newsletter"

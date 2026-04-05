@@ -6,7 +6,10 @@ import yfinance as yf
 import pandas as pd
 import anthropic
 from datetime import datetime, timedelta
-from config import TICKERS, NEWSLETTER_SUBJECT
+from config import (
+    GOOGLE_DRIVE_FILE_ID, GOOGLE_CREDENTIALS_PATH,
+    EXCLUDE_TICKERS, FALLBACK_TICKERS, NEWSLETTER_SUBJECT,
+)
 
 # .env 파일에서 환경변수 로드
 def load_env():
@@ -20,6 +23,58 @@ def load_env():
                     os.environ.setdefault(k.strip(), v.strip())
 
 load_env()
+
+
+def fetch_tickers_from_drive():
+    """Google Drive 포트폴리오 엑셀에서 티커 목록 자동 추출"""
+    try:
+        from google.oauth2.service_account import Credentials
+        from googleapiclient.discovery import build
+        from googleapiclient.http import MediaIoBaseDownload
+        import io
+
+        # 서비스 계정 인증
+        creds_path = os.path.join(os.path.dirname(__file__), GOOGLE_CREDENTIALS_PATH)
+        creds_path = os.path.abspath(creds_path)
+        if not os.path.exists(creds_path):
+            print(f"  ❌ 인증 파일 없음: {creds_path}")
+            return None
+
+        creds = Credentials.from_service_account_file(
+            creds_path, scopes=["https://www.googleapis.com/auth/drive.readonly"]
+        )
+        service = build("drive", "v3", credentials=creds)
+
+        # 엑셀 다운로드
+        request = service.files().get_media(fileId=GOOGLE_DRIVE_FILE_ID)
+        buffer = io.BytesIO()
+        downloader = MediaIoBaseDownload(buffer, request)
+        done = False
+        while not done:
+            _, done = downloader.next_chunk()
+        buffer.seek(0)
+
+        # Port 시트에서 Ticker 컬럼 추출 (컬럼 인덱스 2)
+        df = pd.read_excel(buffer, sheet_name="Port", header=None)
+        ticker_col = df.iloc[:, 2]  # Ticker 컬럼
+
+        tickers = set()
+        for val in ticker_col:
+            if pd.isna(val) or not isinstance(val, str):
+                continue
+            val = val.strip().upper()
+            # 헤더, 빈값, 제외 대상 필터링
+            if val in ("TICKER", "NAN", "") or val in EXCLUDE_TICKERS:
+                continue
+            tickers.add(val)
+
+        result = sorted(tickers)
+        print(f"  ✅ Google Drive에서 {len(result)}개 종목 추출: {', '.join(result)}")
+        return result
+
+    except Exception as e:
+        print(f"  ❌ Google Drive 티커 추출 실패: {e}")
+        return None
 
 
 def calc_rsi(prices, period=14):
@@ -491,7 +546,7 @@ def generate_portfolio_section(portfolio_data):
 """
 
 
-def generate_html(stocks_data, news_data, market_data, ai_analyses=None, portfolio_data=None):
+def generate_html(stocks_data, news_data, market_data, ai_analyses=None):
     today = datetime.now().strftime("%Y-%m-%d (%A)")
 
     # 포트폴리오 통계
@@ -542,8 +597,7 @@ def generate_html(stocks_data, news_data, market_data, ai_analyses=None, portfol
 </div>
 """
 
-    # My Portfolio 섹션 (포트폴리오 데이터가 있을 때만)
-    html += generate_portfolio_section(portfolio_data)
+    # My Portfolio 섹션 제거됨 (Google Drive 포트폴리오에서 종목만 자동 추출)
 
     html += f"""
 <!-- Portfolio Summary -->
@@ -763,6 +817,13 @@ def generate_html(stocks_data, news_data, market_data, ai_analyses=None, portfol
 def main():
     print(f"[{datetime.now()}] Collecting data...")
 
+    # Google Drive에서 티커 목록 가져오기
+    print("  Fetching tickers from Google Drive...")
+    tickers = fetch_tickers_from_drive()
+    if not tickers:
+        print(f"  ⚠️ 폴백 티커 사용: {FALLBACK_TICKERS}")
+        tickers = FALLBACK_TICKERS
+
     # 시장 지수
     print("  Fetching market indices...")
     market_data = get_market_summary()
@@ -770,7 +831,7 @@ def main():
     stocks_data = []
     news_data = {}
 
-    for ticker in TICKERS:
+    for ticker in tickers:
         print(f"  Fetching {ticker}...")
         data = get_stock_data(ticker)
         if data:
@@ -788,134 +849,7 @@ def main():
         print("  Analyzing news with Claude AI...")
         ai_analyses = analyze_news_with_ai(news_data)
 
-    # 포트폴리오 데이터 수집
-    portfolio_data = None
-    try:
-        print("  Fetching portfolio data...")
-        import sys
-        sys.path.insert(0, os.path.expanduser("~/stock-portfolio"))
-        from core.data_loader import load_portfolio_data
-        from core.attribution import calculate_stock_attribution, calculate_account_summary
-        from core.market_data import calc_rsi as _rsi
-
-        port = load_portfolio_data(
-            file_id=os.getenv("GOOGLE_DRIVE_FILE_ID", "15GSpPWQ4ePvRUb9yuG5GmK3T6z6oo97m"),
-            local_path=os.path.expanduser("~/Downloads/Portpolio_01.02.2026 (1).xlsx"),
-        )
-        all_h = pd.concat(port["holdings_by_account"].values(), ignore_index=True)
-
-        # stocks_data에서 시세 정보 활용 (이미 수집됨)
-        mkt = {}
-        for s in stocks_data:
-            if s:
-                mkt[s["ticker"]] = s
-
-        attr = calculate_stock_attribution(all_h, mkt, port.get("k401_history"))
-        acct_sum = calculate_account_summary(attr)
-
-        total_cost = attr["cost"].sum()
-        total_value = attr["current_value"].sum()
-
-        # 일일 변동
-        daily_change = 0
-        for _, row in all_h.iterrows():
-            t = row.get("Ticker", "")
-            if pd.isna(t) or t in ("Cash", "", "None"):
-                continue
-            if t in mkt and mkt[t]:
-                cp = mkt[t].get("current_price", 0) or 0
-                pc = mkt[t].get("previous_close", 0) or 0
-                sh = float(row.get("Share", 0) or 0)
-                if cp and pc and sh:
-                    daily_change += (cp - pc) * sh
-
-        # 큰 변동 종목 (상위3 + 하위3)
-        movers_list = []
-        for _, row in all_h.iterrows():
-            t = row.get("Ticker", "")
-            if pd.isna(t) or t in ("Cash", "", "None"):
-                continue
-            if t in mkt and mkt[t]:
-                cp = mkt[t].get("current_price", 0) or 0
-                pc = mkt[t].get("previous_close", 0) or 0
-                sh = float(row.get("Share", 0) or 0)
-                if cp and pc and sh:
-                    chg = (cp - pc) * sh
-                    pct = (cp - pc) / pc * 100
-                    movers_list.append({"ticker": t, "change": chg, "pct": pct})
-
-        # 같은 종목 합산
-        merged = {}
-        for m in movers_list:
-            if m["ticker"] in merged:
-                merged[m["ticker"]]["change"] += m["change"]
-            else:
-                merged[m["ticker"]] = m
-        movers_sorted = sorted(merged.values(), key=lambda x: x["change"])
-        top_movers = movers_sorted[:3] + movers_sorted[-3:][::-1]  # worst 3 + best 3 역순
-
-        # 주의 종목
-        alerts = []
-        for _, r in attr.iterrows():
-            if r["ticker"] == "Cash":
-                continue
-            # 과집중
-            if r["weight"] > 0.10 and "401K" not in r.get("account", ""):
-                alerts.append(f'{r["ticker"]} 비중 {r["weight"]*100:.1f}% (과집중)')
-            # 큰 손실
-            if r["return_pct"] < -0.30:
-                alerts.append(f'{r["ticker"]} {r["return_pct"]*100:.0f}% 손실 중')
-        # RSI 과매도 (stocks_data에서)
-        for s in stocks_data:
-            if s and s.get("rsi") and s["rsi"] < 30:
-                alerts.append(f'{s["ticker"]} RSI {s["rsi"]:.0f} (과매도)')
-
-        # YTD (포트폴리오 대시보드와 동일 로직)
-        from core.market_data import fetch_history
-        from core.returns import build_daily_portfolio_value
-        tickers_list = [t for t in all_h["Ticker"].unique() if pd.notna(t) and t not in ("Cash", "")]
-        try:
-            prices = fetch_history(list(tickers_list), "2026-01-01")
-            pv = build_daily_portfolio_value(all_h, prices, "2026-01-01")
-            ytd_return = (pv.iloc[-1] / pv.iloc[0] - 1) * 100 if len(pv) >= 2 else 0
-        except Exception:
-            ytd_return = 0
-
-        # S&P 500 YTD
-        try:
-            import time; time.sleep(1)
-            spy = fetch_history(["SPY"], "2026-01-01")
-            spy_ytd = (spy["SPY"].iloc[-1] / spy["SPY"].iloc[0] - 1) * 100 if not spy.empty else 0
-        except Exception:
-            spy_ytd = 0
-
-        # 계좌별
-        accounts_info = []
-        if acct_sum is not None and not acct_sum.empty:
-            for _, r in acct_sum.iterrows():
-                accounts_info.append({
-                    "name": r["account"],
-                    "value": r["current_value"],
-                    "pnl": r["pnl"],
-                    "return": r["return_pct"] * 100,
-                })
-
-        portfolio_data = {
-            "total_value": total_value,
-            "total_cost": total_cost,
-            "daily_change": daily_change,
-            "ytd_return": ytd_return,
-            "spy_ytd": spy_ytd,
-            "top_movers": top_movers,
-            "alerts": alerts[:5],
-            "accounts": accounts_info,
-        }
-        print(f"  Portfolio: {total_value:,.0f} (daily {daily_change:+,.0f})")
-    except Exception as e:
-        print(f"  [WARN] Portfolio data failed: {e}")
-        import traceback; traceback.print_exc()
-
-    html = generate_html(stocks_data, news_data, market_data, ai_analyses, portfolio_data)
+    html = generate_html(stocks_data, news_data, market_data, ai_analyses)
 
     # 파일 저장
     output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")

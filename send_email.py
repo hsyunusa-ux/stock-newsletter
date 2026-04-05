@@ -2,6 +2,7 @@
 """Gmail SMTP로 뉴스레터 자동 발송"""
 
 import smtplib
+import subprocess
 import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -39,10 +40,24 @@ def send_newsletter():
             server.login(gmail_user, gmail_app_password)
             server.sendmail(gmail_user, gmail_user, msg.as_string())
         print(f"[SUCCESS] Newsletter sent to {gmail_user}")
-        return True
     except Exception as e:
         print(f"[ERROR] Failed to send: {e}")
         return False
+
+    # GitHub Pages 배포 (output/ HTML을 push)
+    try:
+        repo_dir = os.path.dirname(os.path.abspath(__file__))
+        subprocess.run(["git", "add", "output/"], cwd=repo_dir, check=True)
+        subprocess.run(
+            ["git", "commit", "-m", f"Add newsletter {today}"],
+            cwd=repo_dir, check=True,
+        )
+        subprocess.run(["git", "push"], cwd=repo_dir, check=True)
+        print(f"[SUCCESS] GitHub Pages 배포 완료")
+    except Exception as e:
+        print(f"[WARN] GitHub push 실패 (이메일은 발송됨): {e}")
+
+    return True
 
 
 if __name__ == "__main__":
