@@ -7,7 +7,7 @@ import pandas as pd
 import anthropic
 from datetime import datetime, timedelta
 from config import (
-    GOOGLE_DRIVE_FILE_ID, GOOGLE_CREDENTIALS_PATH,
+    SHEET_CSV_URL,
     EXCLUDE_TICKERS, FALLBACK_TICKERS, NEWSLETTER_SUBJECT,
 )
 
@@ -26,54 +26,58 @@ load_env()
 
 
 def fetch_tickers_from_drive():
-    """Google Drive 포트폴리오 엑셀에서 티커 목록 자동 추출"""
+    """Google Sheets (Overview - Total Portfolio) 에서 티커 목록 자동 추출"""
     try:
-        from google.oauth2.service_account import Credentials
-        from googleapiclient.discovery import build
-        from googleapiclient.http import MediaIoBaseDownload
+        import urllib.request
+        import csv
         import io
 
-        # 서비스 계정 인증
-        creds_path = os.path.join(os.path.dirname(__file__), GOOGLE_CREDENTIALS_PATH)
-        creds_path = os.path.abspath(creds_path)
-        if not os.path.exists(creds_path):
-            print(f"  ❌ 인증 파일 없음: {creds_path}")
-            return None
+        # 공개 CSV 다운로드
+        req = urllib.request.Request(SHEET_CSV_URL, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            raw = resp.read().decode("utf-8")
 
-        creds = Credentials.from_service_account_file(
-            creds_path, scopes=["https://www.googleapis.com/auth/drive.readonly"]
-        )
-        service = build("drive", "v3", credentials=creds)
+        reader = csv.reader(io.StringIO(raw))
+        rows = list(reader)
 
-        # 엑셀 다운로드
-        request = service.files().get_media(fileId=GOOGLE_DRIVE_FILE_ID)
-        buffer = io.BytesIO()
-        downloader = MediaIoBaseDownload(buffer, request)
-        done = False
-        while not done:
-            _, done = downloader.next_chunk()
-        buffer.seek(0)
-
-        # Port 시트에서 Ticker 컬럼 추출 (컬럼 인덱스 2)
-        df = pd.read_excel(buffer, sheet_name="Port", header=None)
-        ticker_col = df.iloc[:, 2]  # Ticker 컬럼
-
+        # Total Portfolio 섹션: Ticker는 13번째 열 (index 12)
+        TICKER_COL = 12
         tickers = set()
-        for val in ticker_col:
-            if pd.isna(val) or not isinstance(val, str):
+        in_portfolio = False
+
+        for row in rows:
+            if len(row) <= TICKER_COL:
                 continue
-            val = val.strip().upper()
-            # 헤더, 빈값, 제외 대상 필터링
-            if val in ("TICKER", "NAN", "") or val in EXCLUDE_TICKERS:
+            cell = row[TICKER_COL].strip()
+
+            # 헤더 행 감지
+            if cell.upper() == "TICKER":
+                in_portfolio = True
                 continue
-            tickers.add(val)
+
+            if not in_portfolio:
+                continue
+
+            # 빈 값 또는 숫자면 종료
+            if not cell or cell.upper() in ("", "TOTAL"):
+                if in_portfolio and not cell:
+                    in_portfolio = False
+                continue
+
+            val = cell.upper()
+            if val in EXCLUDE_TICKERS:
+                continue
+
+            # 유효한 티커인지 확인 (알파벳만, 1~5자)
+            if val.isalpha() and 1 <= len(val) <= 5:
+                tickers.add(val)
 
         result = sorted(tickers)
-        print(f"  ✅ Google Drive에서 {len(result)}개 종목 추출: {', '.join(result)}")
-        return result
+        print(f"Fetched {len(result)} tickers from Google Sheets: {', '.join(result)}")
+        return result if result else None
 
     except Exception as e:
-        print(f"  ❌ Google Drive 티커 추출 실패: {e}")
+        print(f"Google Sheets fetch failed: {e}")
         return None
 
 
