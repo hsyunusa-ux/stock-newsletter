@@ -2,10 +2,9 @@ name: Daily Stock Newsletter
 
 on:
   schedule:
-    # EDT(서머타임) 오전 8시 = UTC 오후 12시
-    # EST 오전 8시 = UTC 오후 1시
-    # GitHub Actions cron 지연(30분~수시간) 감안하여 UTC 11:30에 실행
-    - cron: '30 11 * * 1-5'  # UTC 11:30 → EDT 7:30AM / EST 6:30AM (평일만)
+    # 매일 오전 7시 EST (UTC-5) = UTC 12:00
+    # 서머타임(EDT, UTC-4) 적용 시 = 오전 8시 EDT
+    - cron: '0 12 * * 1-5'  # UTC 12:00 → EST 7:00AM / EDT 8:00AM (평일)
   workflow_dispatch:  # 수동 실행 가능
 
 # GitHub Pages 배포를 위한 권한
