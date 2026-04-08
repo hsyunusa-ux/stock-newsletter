@@ -26,7 +26,7 @@ def send_newsletter():
     today = datetime.now().strftime("%Y-%m-%d")
     subject = f"{subject} - {today}"
 
-    recipient = "hsyunusa1@mail.com"
+    recipient = "hsyunusa1@gmail.com"
 
     # 이메일 구성
     msg = MIMEMultipart("alternative")
