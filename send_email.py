@@ -26,11 +26,13 @@ def send_newsletter():
     today = datetime.now().strftime("%Y-%m-%d")
     subject = f"{subject} - {today}"
 
+    recipient = "hsyunusa1@mail.com"
+
     # 이메일 구성
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = gmail_user
-    msg["To"] = gmail_user
+    msg["To"] = recipient
 
     msg.attach(MIMEText(html_content, "html"))
 
@@ -38,8 +40,8 @@ def send_newsletter():
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
             server.login(gmail_user, gmail_app_password)
-            server.sendmail(gmail_user, gmail_user, msg.as_string())
-        print(f"[SUCCESS] Newsletter sent to {gmail_user}")
+            server.sendmail(gmail_user, recipient, msg.as_string())
+        print(f"[SUCCESS] Newsletter sent to {recipient}")
     except Exception as e:
         print(f"[ERROR] Failed to send: {e}")
         return False
