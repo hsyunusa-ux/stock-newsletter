@@ -40,8 +40,8 @@ def fetch_tickers_from_drive():
         reader = csv.reader(io.StringIO(raw))
         rows = list(reader)
 
-        # Total Portfolio 섹션: Ticker는 13번째 열 (index 12)
-        TICKER_COL = 12
+        # Total Portfolio 섹션: Ticker는 14번째 열 (index 13)
+        TICKER_COL = 13
         tickers = set()
         in_portfolio = False
 
@@ -58,10 +58,9 @@ def fetch_tickers_from_drive():
             if not in_portfolio:
                 continue
 
-            # 빈 값 또는 숫자면 종료
-            if not cell or cell.upper() in ("", "TOTAL"):
-                if in_portfolio and not cell:
-                    in_portfolio = False
+            # Total 또는 빈 값이면 종료
+            if not cell or cell.upper() == "TOTAL":
+                in_portfolio = False
                 continue
 
             val = cell.upper()
