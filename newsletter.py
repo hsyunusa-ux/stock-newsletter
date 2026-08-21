@@ -4,11 +4,11 @@
 import os
 import yfinance as yf
 import pandas as pd
-import anthropic
 from datetime import datetime, timedelta
 from config import (
     SHEET_CSV_URL,
     EXCLUDE_TICKERS, FALLBACK_TICKERS, NEWSLETTER_SUBJECT,
+    AUTO_TRADER_PYTHON,
 )
 
 # .env 파일에서 환경변수 로드
@@ -23,6 +23,44 @@ def load_env():
                     os.environ.setdefault(k.strip(), v.strip())
 
 load_env()
+
+
+def fetch_tickers_from_webull():
+    """Webull 전 계좌 보유종목 합산 조회 — auto-trader의 공식 OpenAPI 재사용 (읽기 전용)"""
+    import subprocess
+    import json
+
+    if not os.path.exists(AUTO_TRADER_PYTHON):
+        print(f"  ❌ auto-trader venv 없음: {AUTO_TRADER_PYTHON}")
+        return None
+
+    helper = os.path.join(os.path.dirname(os.path.abspath(__file__)), "webull_tickers.py")
+    try:
+        result = subprocess.run(
+            [AUTO_TRADER_PYTHON, helper],
+            capture_output=True, text=True, timeout=180,
+        )
+        # 다른 print 출력과 섞이지 않도록 마커 라인만 파싱
+        tickers = None
+        for line in result.stdout.splitlines():
+            if line.startswith("TICKERS_JSON="):
+                tickers = json.loads(line[len("TICKERS_JSON="):])
+                break
+
+        if tickers is None:
+            print(f"  ❌ Webull 조회 응답 파싱 실패: {result.stderr[:200]}")
+            return None
+
+        tickers = sorted(t for t in tickers if t not in EXCLUDE_TICKERS)
+        if not tickers:
+            print("  ❌ Webull 보유종목 0개 (조회 실패 가능성) — 폴백 사용")
+            return None
+
+        print(f"  ✅ Webull에서 {len(tickers)}개 보유종목 조회: {', '.join(tickers)}")
+        return tickers
+    except Exception as e:
+        print(f"  ❌ Webull 보유종목 조회 실패: {e}")
+        return None
 
 
 def fetch_tickers_from_drive():
@@ -201,6 +239,36 @@ def fetch_article_text(url, timeout=10):
         return ""
 
 
+def call_claude_cli(prompt, timeout=600):
+    """Claude Code CLI(claude -p)로 분석 — Max Plan 포함이라 API 비용 없음"""
+    import subprocess
+    import shutil
+
+    # launchd 환경에서는 PATH가 최소화되므로 절대 경로 폴백
+    claude_bin = shutil.which("claude") or os.path.expanduser("~/.local/bin/claude")
+    if not os.path.exists(claude_bin):
+        raise FileNotFoundError(f"claude CLI를 찾을 수 없음: {claude_bin}")
+
+    # ANTHROPIC_API_KEY가 있으면 CLI가 Max Plan 대신 API로 과금하므로 반드시 제거
+    env = {k: v for k, v in os.environ.items()
+           if k not in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN")}
+
+    result = subprocess.run(
+        [claude_bin, "-p", "--model", "sonnet"],
+        input=prompt,
+        capture_output=True,
+        text=True,
+        timeout=timeout,
+        env=env,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"claude CLI 오류 (code {result.returncode}): {result.stderr[:300]}")
+    output = result.stdout.strip()
+    if not output:
+        raise RuntimeError("claude CLI 응답이 비어 있음")
+    return output
+
+
 def analyze_news_with_ai(all_news_data):
     """Claude Sonnet으로 기사 전문을 읽고 종목별 한글 분석"""
     if not all_news_data:
@@ -252,16 +320,31 @@ def analyze_news_with_ai(all_news_data):
 - 불필요한 수식어 없이 팩트 중심
 - [요약], [영향], [주목 포인트] 섹션 헤더를 반드시 포함"""
 
+    # 1순위: Claude Code CLI (Max Plan 구독에 포함 — API 비용 0원)
+    raw = None
     try:
-        client = anthropic.Anthropic()
-        print("    Calling Claude Sonnet for analysis...")
-        resp = client.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=8000,
-            messages=[{"role": "user", "content": prompt}]
-        )
-        raw = resp.content[0].text
+        print("    Calling Claude CLI for analysis...")
+        raw = call_claude_cli(prompt)
+    except Exception as e:
+        print(f"    ⚠️ Claude CLI 실패, API로 폴백: {e}")
 
+    # 2순위: Anthropic API (CLI 없는 환경 폴백 — 예: GitHub Actions 수동 실행)
+    if not raw:
+        try:
+            import anthropic
+            client = anthropic.Anthropic()
+            print("    Calling Claude Sonnet API for analysis...")
+            resp = client.messages.create(
+                model="claude-sonnet-4-6",
+                max_tokens=8000,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            raw = resp.content[0].text
+        except Exception as e:
+            print(f"[AI ERROR] {e}")
+            return {}
+
+    try:
         # 파싱: ### TICKER 기준으로 분리
         analyses = {}
         current_ticker = None
@@ -820,9 +903,12 @@ def generate_html(stocks_data, news_data, market_data, ai_analyses=None):
 def main():
     print(f"[{datetime.now()}] Collecting data...")
 
-    # Google Drive에서 티커 목록 가져오기
-    print("  Fetching tickers from Google Drive...")
-    tickers = fetch_tickers_from_drive()
+    # 티커 목록: ① Webull 보유종목 → ② Google Drive → ③ 고정 폴백
+    print("  Fetching tickers from Webull...")
+    tickers = fetch_tickers_from_webull()
+    if not tickers:
+        print("  Fetching tickers from Google Drive...")
+        tickers = fetch_tickers_from_drive()
     if not tickers:
         print(f"  ⚠️ 폴백 티커 사용: {FALLBACK_TICKERS}")
         tickers = FALLBACK_TICKERS

@@ -1,10 +1,8 @@
 name: Daily Stock Newsletter
 
 on:
-  schedule:
-    # 매일 오전 7시 EST (UTC-5) = UTC 12:00
-    # 서머타임(EDT, UTC-4) 적용 시 = 오전 8시 EDT
-    - cron: '0 12 * * 1-5'  # UTC 12:00 → EST 7:00AM / EDT 8:00AM (평일)
+  # 자동 스케줄 비활성화 (2026-08-21) — Mac launchd + Claude CLI 로컬 실행으로 전환
+  # Mac이 꺼져 있던 날은 GitHub Actions 탭에서 수동 실행(workflow_dispatch)으로 백업 발송 가능
   workflow_dispatch:  # 수동 실행 가능
 
 # GitHub Pages 배포를 위한 권한
